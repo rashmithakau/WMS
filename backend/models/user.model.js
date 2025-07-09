@@ -9,10 +9,12 @@ const userSchema = new mongoose.Schema(
     phoNumber: {
       type: String,
       required: true,
+      match: [/^0\d{9}$/, 'Phone number must be 10 digits and start with 0'],
     },
     password: {
       type: String,
       required: true,
+      minlenngth: 8,
     },
   },
   {
