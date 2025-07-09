@@ -1,9 +1,9 @@
 import React from "react";
 
-const Button1 = ({ txt }) => {
+const Button1 = ({ txt,handleClick }) => {
   return (
     <div>
-      <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
+      <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400" onClick={handleClick}>
         {txt}
       </button>
     </div>

@@ -9,7 +9,7 @@ const LoginPage = () => {
   return (
     <>
       <Container1>
-        <Heading1 txt={"Login Page"} />
+        <Heading1 txt={"Sign In"} />
         <div className="mb-4">
           <label htmlFor="username" className="block text-gray-600 mb-2">
             Username :{" "}
