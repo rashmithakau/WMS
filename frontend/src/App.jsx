@@ -1,4 +1,5 @@
 import LoginPage from "./pages/LoginPage"
+import Registration from "./pages/Registration"
 
 
 function App() {
@@ -7,7 +8,7 @@ function App() {
   return (
     <>
     
-      <LoginPage />
+      <Registration/>
     </>
   )
 }
