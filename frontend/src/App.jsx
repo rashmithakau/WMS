@@ -1,3 +1,4 @@
+import LoginPage from "./pages/LoginPage"
 
 
 function App() {
@@ -5,7 +6,8 @@ function App() {
 
   return (
     <>
-
+    
+      <LoginPage />
     </>
   )
 }
