@@ -25,14 +25,14 @@ const Registration = () => {
     setErrors({}); // clear previous errors
 
     try {
-     loginUser({
-      userName: username,
-      password: password,
-    });
-  } catch (error) {
-    console.error("Login error:", error);
-    setErrors({ general: "Login failed. Please try again." });
-  }
+      createUser({
+        userName: username,
+        phoNumber: mobile,
+        password: password,
+      });
+    } catch (error) {
+      console.error("Error during registration:", error);
+    }
   };
 
   return (
