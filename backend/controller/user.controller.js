@@ -31,3 +31,29 @@ export const createUser = async (req, res) => {
     res.status(500).json({ success: false, message: "Internal server error" });
   }
 };
+
+
+
+
+export const loginUser = async (req, res) => {
+  const loginData = req.body;
+
+  try {
+    const user = await User.findOne({userName: loginData.userName});
+    if(user.password==loginData.password){
+      res.status(200).json({
+        success: true,
+        message: "Login successful"
+      });
+    }else{
+      res.status(401).json({
+        success: false,
+        message: "Invalid username or password"
+      });
+    }
+  } catch (error) {
+    console.error("Error during login:", error);
+  }
+
+ 
+};
