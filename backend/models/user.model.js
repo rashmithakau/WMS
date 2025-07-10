@@ -1,27 +1,9 @@
-import mongoose from "mongoose";
+import express from 'express';
+import { createUser } from '../controller/user.controller.js';
 
-const userSchema = new mongoose.Schema(
-  {
-    userName: {
-      type: String,
-      required: true,
-    },
-    phoNumber: {
-      type: String,
-      required: true,
-      match: [/^0\d{9}$/, 'Phone number must be 10 digits and start with 0'],
-    },
-    password: {
-      type: String,
-      required: true,
-      minlenngth: 8,
-    },
-  },
-  {
-    timestamps: true,
-  }
-);
+const router = express.Router();
 
-const User = mongoose.model("User",userSchema);
+router.post("/",createUser);
 
-export default User;
+
+export default router;
