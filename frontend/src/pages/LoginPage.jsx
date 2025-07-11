@@ -4,8 +4,15 @@ import PasswordField from "../components/PasswordField";
 import Container1 from "../components/Container1";
 import Heading1 from "../components/Heading1";
 import Button1 from "../components/Button1";
+import { Button2 } from "../components/Button2";
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+
+  const handleSignUpClick = () => {
+    navigate('/signup');
+  };
   return (
     <>
       <Container1>
@@ -22,7 +29,10 @@ const LoginPage = () => {
           </label>
           <PasswordField txt={"Enter Password Here"} />
         </div>
-        <Button1 txt={"Login Now"} />
+        <div className="flex flex-col gap-y-4">
+          <Button1 txt={"Login Now"} />
+          <Button2 txt={"Sign Up"} handleClick={handleSignUpClick}/>
+        </div>
       </Container1>
     </>
   );
