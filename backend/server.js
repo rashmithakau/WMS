@@ -11,8 +11,7 @@ const app= express();
 
 // Allow requests from frontend
 app.use(cors({
-    origin: "http://localhost:5173", // your frontend URL
-    credentials: true // if you are using cookies, authorization headers, etc.
+    origin: "http://localhost:5173"
   }));
 
 const PORT = process.env.PORT || 5000;
@@ -25,3 +24,5 @@ app.listen(PORT,()=>{
     connectDB();
     console.log(`Server is running on port ${PORT}`);
 })
+
+

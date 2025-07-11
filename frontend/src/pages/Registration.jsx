@@ -7,8 +7,11 @@ import Button1 from "../components/Button1";
 import { createUser } from "../api/user";
 import { validateRegistration } from "../validations/registrationValidation";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const Registration = () => {
+  const navigate = useNavigate();
+
   const [username, setUsername] = useState("");
   const [mobile, setMobile] = useState("");
   const [password, setPassword] = useState("");
@@ -53,6 +56,7 @@ const Registration = () => {
           confirmButtonText: "OK",
         });
         clearUi();
+        navigate("/"); 
       } else {
         Swal.fire({
           title: "Error!",

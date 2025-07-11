@@ -4,10 +4,18 @@ import PasswordField from "../components/PasswordField";
 import Container1 from "../components/Container1";
 import Heading1 from "../components/Heading1";
 import Button1 from "../components/Button1";
+import { Button2 } from "../components/Button2";
+import { useNavigate } from 'react-router-dom';
 import { validateLogin } from "../validations/loginValidation";
 import { useState } from "react";
 import { loginUser } from "../api/user";
 import swal from "sweetalert2";
+
+const LoginPage = () => {
+  const navigate = useNavigate();
+
+  const handleSignUpClick = () => {
+    navigate('/signup');
 
 const LoginPage = () => {
   const [username, setUsername] = React.useState("");
@@ -88,7 +96,11 @@ const LoginPage = () => {
             <p className="text-red-500 text-sm">{errors.password}</p>
           )}
         </div>
-        <Button1 txt={"Login Now"} handleClick={handleLogin} />
+        <div className="flex flex-col gap-y-4">
+          <Button1 txt={"Login Now"} handleClick={handleLogin} />
+          <Button2 txt={"Sign Up"} handleClick={handleSignUpClick}/>
+        </div>
+
       </Container1>
     </>
   );
