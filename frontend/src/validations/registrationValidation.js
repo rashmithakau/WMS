@@ -1,7 +1,7 @@
 export function validateRegistration({ username, mobile, password, confirmPassword }) {
     const errors = {};
   
-    if (!username.trim()) {
+    if (!username) {
       errors.username = "Username is required";
     }
   
