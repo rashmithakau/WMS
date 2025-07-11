@@ -48,6 +48,8 @@ const Registration = () => {
         password: password,
       });
 
+      console.log("Create User Response:", createUserRes);
+
       if (createUserRes.status === 201) {
         Swal.fire({
           title: "Success!",
@@ -56,17 +58,26 @@ const Registration = () => {
           confirmButtonText: "OK",
         });
         clearUi();
-        navigate("/"); 
+        navigate("/");
+      }
+    } catch (error) {
+      console.error("Error during registration:", error);
+
+      if (error.response.status === 409) {
+        Swal.fire({
+          title: "Error!",
+          text: "Username already exists. Please choose a different username.",
+          icon: "error",
+          confirmButtonText: "OK",
+        });
       } else {
         Swal.fire({
           title: "Error!",
-          text: "Failed to create account. Please try again.",
+          text: "An error occurred while creating your account. Please try again.",
           icon: "error",
           confirmButtonText: "OK",
         });
       }
-    } catch (error) {
-      console.error("Error during registration:", error);
     }
   };
 
