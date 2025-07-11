@@ -9,15 +9,15 @@ import { useNavigate } from 'react-router-dom';
 import { validateLogin } from "../validations/loginValidation";
 import { useState } from "react";
 import { loginUser } from "../api/user";
-import swal from "sweetalert2";
+import Swal from "sweetalert2";
 
 const LoginPage = () => {
   const navigate = useNavigate();
 
   const handleSignUpClick = () => {
     navigate('/signup');
+  };
 
-const LoginPage = () => {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [errors, setErrors] = useState({});
@@ -53,17 +53,26 @@ const LoginPage = () => {
           confirmButtonText: "OK",
         });
         clear();
-      } else {
+      } 
+    } catch (error) {
+      console.error("Login error:", error);
+      setErrors({ general: "Login failed. Please try again." });
+
+      if(error.response.status === 401) {
         Swal.fire({
           title: "Error!",
-          text: "Failed to Login. Please try again.",
+          text: "Invalid username or password.",
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+      }else{
+        Swal.fire({
+          title: "Error!",
+          text: "An unexpected error occurred. Please try again later.",
           icon: "error",
           confirmButtonText: "OK",
         });
       }
-    } catch (error) {
-      console.error("Login error:", error);
-      setErrors({ general: "Login failed. Please try again." });
     }
   };
   return (

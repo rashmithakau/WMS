@@ -7,8 +7,18 @@ export const createUser = async (req, res) => {
   // Validate request body
   const { error } = userValidationSchema.validate(user, { abortEarly: false });
 
+  const userInDb = await User.findOne({ userName: user.userName });
+  console.log("User in DB:", userInDb);
+  if (userInDb) {
+    return res.status(409).json({
+      success: false,
+      message: "Username already exists",
+    });
+  }
+
   if (error) {
     return res.status(400).json({
+      success: false,
       message: "Validation failed",
       errors: error.details.map((err) => err.message), // array of all error messages
     });
